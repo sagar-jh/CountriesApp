@@ -59,7 +59,7 @@ fun FlowCounterRow(onRefreshClick: () -> Unit) {
 
             Text("Taps: $tap", color=Color.Black)
             Button(onClick = {
-                //onRefreshClick()
+                onRefreshClick()
             }) {
                 Text("Refresh")
             }

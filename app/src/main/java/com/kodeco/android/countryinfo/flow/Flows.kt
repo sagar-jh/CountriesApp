@@ -18,22 +18,22 @@ object Flows{
     val mutableCounterFlow: StateFlow<Int> = counterFlow
 
     fun updateTap(){
-       // tapFlow.value= tapFlow.value+1
+        tapFlow.value= tapFlow.value+1
     }
 
     fun updateBackFlow(){
-     //   backFlow.value= backFlow.value+1
+        backFlow.value= backFlow.value+1
 
     }
 
     fun counterFlow(){
-     /*   GlobalScope.launch {
+        GlobalScope.launch {
             while(true){
                 delay(1000)
                 counterFlow.value= counterFlow.value+1;
             }
         }
-    */
+
     }
 }
 
