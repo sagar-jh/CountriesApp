@@ -41,7 +41,7 @@ fun FlowCounterRow(onRefreshClick: () -> Unit) {
             var back: Int by remember {
                 mutableStateOf(0)
             }
-            var refresh: Int by remember {
+            var total: Int by remember {
                 mutableStateOf(0)
             }
             LaunchedEffect(Unit) {
@@ -56,14 +56,21 @@ fun FlowCounterRow(onRefreshClick: () -> Unit) {
                     back = it
                 }
             }
+            LaunchedEffect(Unit) {
+                Flows.mutableCombineFlow.collect {
+                    total = it
+                }
+            }
 
             Text("Taps: $tap", color=Color.Black)
+
+            Text("Back: $back",color=Color.Black)
+            Text("Total: $total", color=Color.Black)
             Button(onClick = {
                 onRefreshClick()
             }) {
                 Text("Refresh")
             }
-            Text("Back: $back",color=Color.Black)
 
         }
     }

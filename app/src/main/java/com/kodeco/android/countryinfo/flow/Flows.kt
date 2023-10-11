@@ -5,6 +5,8 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.zip
 import kotlinx.coroutines.launch
 
 object Flows{
@@ -16,6 +18,9 @@ object Flows{
 
     private val counterFlow= MutableStateFlow(0)
     val mutableCounterFlow: StateFlow<Int> = counterFlow
+
+    private val combineFlow= MutableStateFlow(0)
+    val mutableCombineFlow: StateFlow<Int> = combineFlow
 
     fun updateTap(){
         tapFlow.value= tapFlow.value+1
@@ -35,5 +40,13 @@ object Flows{
         }
 
     }
+
+    fun combineFlow(){
+        tapFlow.zip(backFlow){tap,back->
+            tap+back
+        }
+    }
+
+
 }
 
