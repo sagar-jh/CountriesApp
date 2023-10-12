@@ -40,7 +40,10 @@ object Flows{
         }
 
     }
-
+    /*
+        I created a total flow which basically shows a total of both tap and back flow. Based on my understanding,
+        the total flow should emit if either tap or back flow is fired. But it was not working for me
+     */
     fun combineFlow(){
         tapFlow.zip(backFlow){tap,back->
             tap+back
