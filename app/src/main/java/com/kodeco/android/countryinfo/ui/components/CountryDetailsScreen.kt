@@ -42,6 +42,7 @@ fun CountryDetailsScreen(
                         // TODO: Call in to Flows.tapBack()
                         onNavigateUp()
                         Flows.updateBackFlow()
+                        Flows.combineFlow()
                     }) {
                         Icon(
                             imageVector = Icons.Filled.ArrowBack,
