@@ -18,14 +18,18 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.kodeco.android.countryinfo.flow.Flows
+import com.kodeco.android.countryinfo.ui.screens.countryinfo.CountryInfoViewModel
 
 @Composable
-fun FlowCounterRow(onRefreshClick: () -> Unit) {
+fun FlowCounterRow(onRefreshClick: () -> Unit,tap:Int,back:Int) {
 
     Column(
-        Modifier.fillMaxWidth().background(Color.White)
+        Modifier
+            .fillMaxWidth()
+            .background(Color.White)
 
     ) {
         Row(
@@ -35,42 +39,15 @@ fun FlowCounterRow(onRefreshClick: () -> Unit) {
             Arrangement.SpaceBetween ,
             Alignment.CenterVertically ,
         ) {
-            var tap: Int by remember {
-                mutableStateOf(0)
-            }
-            var back: Int by remember {
-                mutableStateOf(0)
-            }
-            var total: Int by remember {
-                mutableStateOf(0)
-            }
-            LaunchedEffect(Unit) {
-                Flows.mutableTapFlow.collect {
-                    tap = it
-                }
-
-            }
-            LaunchedEffect(Unit) {
-                Flows.mutableBackFlow.collect {
-
-                    back = it
-                }
-            }
-            LaunchedEffect(Unit) {
-                Flows.mutableCombineFlow.collect {
-                    total = it
-                }
-            }
-
             Text("Taps: $tap", color=Color.Black)
-
-            Text("Back: $back",color=Color.Black)
-            Text("Total: $total", color=Color.Black)
             Button(onClick = {
                 onRefreshClick()
             }) {
                 Text("Refresh")
             }
+            Text("Back: $back",color=Color.Black)
+
+
 
         }
     }

@@ -15,9 +15,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.kodeco.android.countryinfo.flow.Flows
+import kotlinx.coroutines.flow.StateFlow
 
 @Composable
-fun Loading() {
+fun Loading(load:StateFlow<Int>) {
     var counter:Int by remember {
         mutableStateOf(0)
     }
@@ -29,7 +30,7 @@ fun Loading() {
 
         // TODO: Show the current Flows.counterFlow value here in Text composable
         LaunchedEffect(Unit){
-            Flows.mutableCounterFlow.collect{
+            load.collect{
                 counter=it
             }
         }
@@ -41,5 +42,5 @@ fun Loading() {
 @Preview
 @Composable
 fun LoadingPreview() {
-    Loading()
+    //Loading()
 }
