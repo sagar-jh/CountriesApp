@@ -20,7 +20,7 @@ import com.kodeco.android.countryinfo.sample.sampleCountry
 fun CountryInfoRow(
     country: Country,
     onClick: () -> Unit,
-) {
+    ) {
     Card(
         onClick = onClick,
         modifier = Modifier
@@ -37,8 +37,8 @@ fun CountryInfoRow(
 @Preview
 @Composable
 fun CountryInfoRowPreview() {
-    CountryInfoRow(
+   /* CountryInfoRow(
         country = sampleCountry,
         onClick = {},
-    )
+    )*/
 }
